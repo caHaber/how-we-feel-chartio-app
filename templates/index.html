@@ -4,48 +4,49 @@
 <link rel="stylesheet" type="text/css" href="/static/mapbox/inspector.css">
 <link rel="stylesheet" type="text/css" href="/static/main.css">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
 <body>
-<section>
-    <div id="header-section"></div>
-    <div id="map"></div>
-</section>
-        <iframe id="#chartio-embed" width="100%" height="1500px" src="{{embed_url}}">Hello</iframe>
-    
-<script type="module">
+    <section>
+        <div id="header-section"></div>
+        <div id="map"></div>
+    </section>
+    <iframe id="#chartio-embed" width="100%" height="1500px" src="{{embed_url}}">Hello</iframe>
 
-import define from "/static/mapbox/index.js";
-import {Runtime, Library, Inspector} from "/static/mapbox/runtime.js";
+    <script type="module">
+
+        import define from "/static/mapbox/index.js";
+        import { Runtime, Library, Inspector } from "/static/mapbox/runtime.js";
 
 
-const renders = {
-        "map": "#map",
-        "header": "#header-section"
-    };
+        const renders = {
+            "map": "#map",
+            "header": "#header-section"
+        };
 
-    function render(_node, value) {
-        if (!(value instanceof Element)) {
-          const el = document.createElement("span");
-          el.innerHTML = value;
-          value = el;
+        function render(_node, value) {
+            if (!(value instanceof Element)) {
+                const el = document.createElement("span");
+                el.innerHTML = value;
+                value = el;
+            }
+            if (_node.firstChild !== value) {
+                if (_node.firstChild) {
+                    while (_node.lastChild !== _node.firstChild) _node.removeChild(_node.lastChild);
+                    _node.replaceChild(value, _node.firstChild);
+                } else {
+                    _node.appendChild(value);
+                }
+            }
         }
-        if (_node.firstChild !== value) {
-          if (_node.firstChild) {
-            while (_node.lastChild !== _node.firstChild) _node.removeChild(_node.lastChild);
-            _node.replaceChild(value, _node.firstChild);
-          } else {
-            _node.appendChild(value);
-          }
-        }
-      }
 
-const runtime = new Runtime();
-const main = runtime.module(define, name => {
-        const selector = renders[name];
-        if (selector) {
-          return {fulfilled: (value) => render(document.querySelector(selector), value)}
-        } else {
-          return true;
-        }
-      });
-</script>
+        const runtime = new Runtime();
+        const main = runtime.module(define, name => {
+            const selector = renders[name];
+            if (selector) {
+                return { fulfilled: (value) => render(document.querySelector(selector), value) }
+            } else {
+                return true;
+            }
+        });
+    </script>
 </body>
