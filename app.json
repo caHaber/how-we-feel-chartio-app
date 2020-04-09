@@ -1,0 +1,19 @@
+{
+  "name": "Chartio Embed Proxy",
+  "description": "Simple Proxy to make Chartio embed work on websites",
+  "image": "heroku/python",
+  "keywords": ["python", "chartio" ],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+      }
+    }
+  }
+}

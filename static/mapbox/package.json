@@ -1,0 +1,14 @@
+{
+  "name": "c7f1728cbffb3392",
+  "main": "c7f1728cbffb3392@210.js",
+  "version": "210.0.0",
+  "homepage": "https://observablehq.com/d/c7f1728cbffb3392",
+  "author": {
+    "name": "Casey Aaron Haber",
+    "url": "https://observablehq.com/@cahaber"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

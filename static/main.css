@@ -1,0 +1,26 @@
+path {
+    shape-rendering: optimizeSpeed;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+iframe {
+    border: none;
+}
+#map {
+    margin: auto;
+    width: 70%;
+    height: 80%;
+    padding: 40px;
+}
+
+.l7-ctrl-logo {
+    display: none !important;
+}
+
+section {
+    width: 80%;
+    margin: auto;
+}
